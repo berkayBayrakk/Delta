@@ -16,17 +16,7 @@ function LoginPage(){
         const username =usernameRef.current.value;
         const password=passwordRef.current.value;
         
-        
-       
-        for(const user in loadedUsers){
-            if(user.username===username && user.password===password){
-
-                data.username=username;
-                data.password=password;
-                navigate('/main');
-            }
-        }
-
+        loadedUsers.map((user)=>  {if(user.username==username && user.password==password){navigate('/main')}} );
         setIsValid(true);
         
     }
