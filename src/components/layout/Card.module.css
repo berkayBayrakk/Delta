@@ -1,0 +1,8 @@
+.card{
+    
+    background-color: rgb(105, 143, 150);
+    position: fixed; /* or absolute */
+    top: 40%;
+    left: 40%;
+    
+}

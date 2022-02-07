@@ -1,0 +1,13 @@
+.button{
+    color: rgb(180, 180, 204);
+}
+.form{
+    
+    border-style:dashed ;
+    border-radius: 6px;
+}
+.content{
+    color: red;
+    border-style:dotted ;
+    
+}
