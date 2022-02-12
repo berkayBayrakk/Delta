@@ -1,69 +1,94 @@
 import classes from './Login.module.css';
-import {useState,useEffect,useRef} from 'react';
+import {useState,useEffect,useRef, useContext} from 'react';
 import {useNavigate} from 'react-router';
-import data from '../data';
+import UserContext from '../store/UserContext';
+import img from './show-image.png'
+
+const data=[
+    {
+        id: 1,
+        username: "SYSADMIN",
+        name: "ADMIN",
+        surname: "ADMIN",
+        phoneNumber: 7896363522,
+        email: "sys@admin.com",
+        role: "SYSADMIN"
+    },
+    {
+        id: 2,
+        username: "SYSADMINa",
+        name: "ADMIN",
+        surname: "ADMIN",
+        phoneNumber: 7896363522,
+        email: "sys@admin.com",
+        role: "SYSADMIN"
+    }
+
+];
+
 function LoginPage(){
-    const string="Invalid username or password"; 
+    const [passwordType,setPasswordType]=useState("password");
     const [loadedUsers,setLoadedUsers]=useState([]);
     const [isLoading,setIsLoading]=useState(true);
     const [isValid,setIsValid]=useState(false);
+    const userContext=useContext(UserContext);
     const usernameRef=useRef();
     const passwordRef=useRef();
-
     const navigate=useNavigate();
+   
     function submitHandler(event){
         event.preventDefault();
+        userContext.fillUserArray(data);
+    
         const username =usernameRef.current.value;
         const password=passwordRef.current.value;
-        
-        loadedUsers.map((user)=>  {if(user.username==username && user.password==password){navigate('/main')}} );
-        setIsValid(true);
-        
-    }
-
-    useEffect(() =>{
-    fetch('https://fakestoreapi.com/products')
-    .then(response => {return response.json()})
-    .then((data)=>
-        {
-        const users=[];
-        console.log(data);
-        for(const key in data){
-                
-            const user={
-            id:key,
-            ...data[key]
-            };
-
-            users.push(user);                 
-        };
-        
-        setIsLoading(false);
-        setLoadedUsers(users)}
-        )},
-        [isLoading])
-    
-    
-    
-
-    return(
-        <form className={classes.form} onSubmit={submitHandler}>
+        if(userContext.getIndex(username)===-1){
+            setIsValid(true);
+        }
+        else{
             
+            if(userContext.getCurrentUser().role==="SYSADMIN")
+            
+            navigate('/admin')
+        } 
+    }
+    const [post,setPostId]=useState();
+    useEffect(() => {
+        
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: 'SYSADMIN',password:"SYSADMIN" })
+        };
+        fetch('https://smapi.eu-west-3.elasticbeanstalk.com/user/token', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                setPostId(data.id)
+                console.log(data)
+            });    
+    }, []);
+    return(
+        
+        <form className={classes.form} onSubmit={submitHandler}>
             <div>
                 <label htmlFor="username">Username</label>
                 <input id="username" required type='text' ref={usernameRef} />
             </div>
             <div>
                 <label htmlFor='password'>Password</label>
-                <input id='password' required type='password' ref={passwordRef} />
+                <input id='password' required type={passwordType} ref={passwordRef} />
+                <img src={img} alt='' className={classes.btn} onClick={()=>{if(passwordType==="password"){setPasswordType("text")}else{setPasswordType("password")} }   }/>
             </div>
             <div>
                 <button className={classes.button}>Login</button>
             </div >
-             {isValid? <div className={classes.content}><p>{string}</p></div> :null}
+             {isValid? <div className={classes.content}><p>"Invalid username or password"</p></div> :null}
         </form>
     );
+
+    
     
 }
 
 export default LoginPage;
+
