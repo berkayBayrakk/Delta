@@ -27,9 +27,7 @@ const data=[
 ];
 
 function LoginPage(){
-    const [passwordType,setPasswordType]=useState("password");
-    const [loadedUsers,setLoadedUsers]=useState([]);
-    const [isLoading,setIsLoading]=useState(true);
+    const [passwordType,setPasswordType]=useState("password"); 
     const [isValid,setIsValid]=useState(false);
     const userContext=useContext(UserContext);
     const usernameRef=useRef();
