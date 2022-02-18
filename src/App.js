@@ -1,13 +1,12 @@
 import './App.css';
 import Card from './components/layout/Card';
-import LoginPage from './components/pages/Login';
-import AdminPage from './components/pages/AdminMenu';
+import LoginPage from './components/pages/LoginPage/Login';
+import AdminPage from './components/pages/AdminPages/AdminMenu';
 import {Route,Routes} from 'react-router-dom';
 import CoursePage from './components/pages/AdminPages/CoursePage';
 import StudentPage from './components/pages/AdminPages/StudentPage'
 import TeacherPage from './components/pages/AdminPages/TeacherPage'
 import UserPage from './components/pages/AdminPages/UserPage'
-
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import classes from './Login.module.css';
 import {useState,useEffect, useContext} from 'react';
 import {useNavigate} from 'react-router';
-import UserContext from '../store/UserContext';
+import UserContext from '../../store/UserContext';
 import img from './show-image.png'
 function LoginPage(){
     const [passwordType,setPasswordType]=useState("password"); 
@@ -11,6 +11,7 @@ function LoginPage(){
     const [password,setPassword]=useState("");
     const userContext=useContext(UserContext);
     const navigate=useNavigate();
+   
     useEffect(() => {
         const requestOptions = {
             method: 'POST',
@@ -51,7 +52,7 @@ function LoginPage(){
             </div>
             <div>
                 <label className={classes.user} htmlFor='password'>Password</label>
-                <input id='password' required type={passwordType}  onChange={(e) => setPassword(e.target.value)}  />
+                <input id='password' required type={passwordType}  onChange={(e) => setPassword(e.target.value)}   />
                 <img src={img} alt='' className={classes.btn} onClick={()=>{if(passwordType==="password"){setPasswordType("text")}else{setPasswordType("password")} }   }/>
             </div>
             <div>

@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import classes from './AdminNavigation.module.css'
 import { useNavigate } from "react-router-dom";
 function AdminNavigation(){
-
     const navigation= useNavigate();
-
     return(
 <header className={classes.header}>
 <div className={classes.logo} onClick={()=>(navigation('/admin'))}>Admin Page</div>

@@ -12,7 +12,7 @@ const UserContext=createContext({
     token:"",
     username:""},
     login:(initialUser)=>{},
-    getUser:()=>{}
+    logout:()=>{}
 })
 
 
@@ -23,16 +23,16 @@ export function UserContextProvider(props){
     const context={
         user:user,
         login:login,
-        getUser:getUser    
+        logout:logout    
     }
 
     function login(initialUser){
         setUser(initialUser);
     }
-    function getUser(){
-        return(user);
+
+    function logout(){
+        setUser(null);
     }
-   
 
    return(
        <UserContext.Provider value={context}>
