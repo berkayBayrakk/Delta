@@ -7,7 +7,10 @@ import CoursePage from './components/pages/AdminPages/CoursePage';
 import StudentPage from './components/pages/AdminPages/StudentPage'
 import TeacherPage from './components/pages/AdminPages/TeacherPage'
 import UserPage from './components/pages/AdminPages/UserPage'
-
+import AddUser from './components/pages/AdminPages/AddPages/AddUser';
+import AddTeacher from './components/pages/AdminPages/AddPages/AddTeacher';
+import AddStudent from './components/pages/AdminPages/AddPages/AddStudent';
+import AddCourse from './components/pages/AdminPages/AddPages/AddCourse';
 function App() {
   return (
     <div>
@@ -18,6 +21,10 @@ function App() {
         <Route path="/teachers" element={<TeacherPage />}/>
         <Route path="/students" element={<StudentPage />}/>
         <Route path="/courses" element={<CoursePage />}/>
+        <Route path="/add-user" element={<AddUser />}/>
+        <Route path="/add-teacher" element={<AddTeacher />}/>
+        <Route path="/add-student" element={<AddStudent />}/>
+        <Route path="/add-course" element={<AddCourse />}/>
     </Routes>
     </div>
     

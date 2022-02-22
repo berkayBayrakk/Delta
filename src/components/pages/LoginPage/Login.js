@@ -24,7 +24,7 @@ function LoginPage(){
                 const message=data.message;
                 if(message==="Username or password is incorrect"){
                     setIsValid(true);
-                    setIsLoading(true)
+                    setIsLoading(true);
                 }
                 else{
                     userContext.login(data)
