@@ -8,27 +8,33 @@
     border: 0;
     padding: 10px 0;
     margin-top: 10px;
-    margin-left: -5px;
+    margin-left: 44px;
     border-radius: 5px;
-    background-color:bisque;
+    background-color:rgb(156, 106, 139);
     
     
 }
 
+.input{
+    border-radius: 30px;
+    margin-left: 5px;
+    width: 120px;
+    margin-left: 25px;
+}
+
 .form{
-  overflow: hidden;
-  background-color: white;
+ /* overflow: hidden;
+  background-color: rgb(155, 124, 124);
   padding: 40px 30px 30px 30px;
-  border-radius: 10px;
-  position: absolute;
-  bottom: 25px;
+  border-radius: 30px;
+  align-items: center;
   left: 50%;
-  width: 400px;
+  margin-top: -3;*/
 }
 .content{
-    color: red;
-    border-style:dotted ;
-    
+    color: rgb(0, 0, 0);
+    font-size: 11px;
+    font-weight: 900;
 }
 .btn{
     
@@ -42,6 +48,10 @@
     background: white;
     width: 100%;
     border: 0;
-    padding: 10px 10px;
+    padding: 8px 8px;
     margin: 15px -10px;
+    text-align: center;
+    width: 110px;
+    margin-left: 25px;
+    
 }

@@ -1,8 +1,10 @@
 .card{
-    
-    background-color: rgb(105, 143, 150);
-    position: fixed; /* or absolute */
-    top: 40%;
-    left: 40%;
-    
+    background-color: rgb(168, 153, 153);
+    border:3px solid;
+    border-radius: 30px;
+    border-color: red;
+    width:fit-content;
+    margin-left: 40%;
+    margin-top: 10%;
+    box-shadow: 0 0 15px #8a3030;
 }

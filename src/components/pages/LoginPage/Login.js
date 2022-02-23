@@ -48,11 +48,11 @@ function LoginPage(){
         <form className={classes.form} onSubmit={SubmitHandler}>
             <div>
                 <label className={classes.user} htmlFor="username">Username</label>
-                <input id="username" required type='text'  onChange={(e) => setUsername(e.target.value)} />
+                <input className={classes.input} id="username" required type='text'  onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div>
                 <label className={classes.user} htmlFor='password'>Password</label>
-                <input id='password' required type={passwordType}  onChange={(e) => setPassword(e.target.value)}   />
+                <input className={classes.input} id='password' required type={passwordType}  onChange={(e) => setPassword(e.target.value)}   />
                 <img src={img} alt='' className={classes.btn} onClick={()=>{if(passwordType==="password"){setPasswordType("text")}else{setPasswordType("password")} }   }/>
             </div>
             <div>
