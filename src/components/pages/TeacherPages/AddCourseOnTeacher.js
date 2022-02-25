@@ -1,14 +1,13 @@
-import {CreateCourse} from '../../../fetch/methods';
-import AdminNavigation from "../AdminNavigation";
-import {useState,useContext} from 'react';
-import UserContext from "../../../store/UserContext";
+import { useState ,useContext} from "react";
+import {CreateCourse} from '../../fetch/methods';
 import {useNavigate} from 'react-router';
-
-function AddCourse(){
+import UserContext from "../../store/UserContext";
+import TeacherNavigation from "./TeacherNavigation";
+function AddCourseOnTeacher(){
 
     const navigate=useNavigate();
 
-    const admin=useContext(UserContext);
+    const teacherContext=useContext(UserContext);
 
     const [isLoading,setIsLoading]=useState(false);
 
@@ -19,22 +18,23 @@ function AddCourse(){
     const [teacherId,setTeacherId]=useState();
 
     const course={name:name,subject:subject,teacherId:teacherId};
+    
+    const url="https://smapi.eu-west-3.elasticbeanstalk.com/teacher/lesson";
 
-    const url="https://smapi.eu-west-3.elasticbeanstalk.com/admin/lesson"
-
-    CreateCourse(url,course,admin.user.token,isLoading,navigate,setIsLoading,"courses");
-
+    CreateCourse(url,course,teacherContext.user.token,isLoading,navigate,setIsLoading,"teacher");
+    
     function submitHandler(event){
         event.preventDefault();
         setIsLoading(true);
+        
     }
 
     return(
         <div>
-            <AdminNavigation/>
+            <TeacherNavigation navigation={navigate}/>
             <form onSubmit={submitHandler}>
                 <div>
-                    <label  htmlFor="Name">Name</label>
+                    <label  htmlFor="Name">Course Name</label>
                     <input id="Name" required type='text'  onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div>
@@ -46,10 +46,12 @@ function AddCourse(){
                     <input id="TeacherId" required type='text'  onChange={(e) => setTeacherId(e.target.value)} />
                 </div>
                 <div>
-                <button>Add Course</button>
+                    <button>Add Course</button>
                 </div>
             </form>
-        </div>
+        </div>    
     )
+            
 }
-export default AddCourse;
+
+export default AddCourseOnTeacher;

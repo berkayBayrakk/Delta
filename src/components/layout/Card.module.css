@@ -1,10 +1,22 @@
+.table{
+    background-color: #3f1b2a;
+    margin-top: 0cm;
+    
+}
+.text{
+    color:aliceblue;
+    height: 2cm;
+    margin-left: 1cm;
+    
+}
+
 .card{
-    background-color: rgb(168, 153, 153);
+    background-color: rgb(141, 129, 129);
     border:3px solid;
     border-radius: 30px;
     border-color: red;
     width:fit-content;
     margin-left: 40%;
-    margin-top: 10%;
+    margin-top: 3cm;
     box-shadow: 0 0 15px #8a3030;
 }

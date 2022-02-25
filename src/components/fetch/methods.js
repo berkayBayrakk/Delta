@@ -108,7 +108,7 @@ export function CreateStudent(student,token,isLoading,navigate,setIsLoading){
         [isLoading])
 }
 
-export function CreateCourse(course,token,isLoading,navigate,setIsLoading){
+export function CreateCourse(url,course,token,isLoading,navigate,setIsLoading,navigatePlace){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',Authorization: `Bearer ${token}`,'Accept': 'application/json' },
@@ -116,16 +116,20 @@ export function CreateCourse(course,token,isLoading,navigate,setIsLoading){
 
     useEffect( ()=> {
         if(isLoading){
-            fetch("https://smapi.eu-west-3.elasticbeanstalk.com/admin/lesson", requestOptions)
+            fetch(url, requestOptions)
             .then(resp=>resp.json())
             .then(data=>{
-                console.log(data);
+                
                 if(data.title==="One or more validation errors occurred."){
                     setIsLoading(false);
                     alert("One or more validation errors occurred.");
                 }
-                if(data==="Lesson added"){
-                    navigate('/courses');
+                else if(data==="Lesson added"){
+                    navigate('/'+navigatePlace);
+                }
+                else if(data==="Lesson created"){
+                    console.log(data);
+                    navigate('/'+navigatePlace);
                 }
             }).catch(err=> {console.log(err);alert("Something wrong!!!");setIsLoading(false)})
         }},

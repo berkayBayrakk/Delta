@@ -35,7 +35,7 @@ function LoginPage(){
                         navigate('/admin')
                     }
                     else if(data.roleName==="TEACHER"){
-                        navigate('/admin')
+                        navigate('/teacher')
                     }
                     else if(data.roleName==="STUDENT"){
                         navigate('/admin')
@@ -45,21 +45,24 @@ function LoginPage(){
         setIsLoading(false);
     }
     return(  
-        <form className={classes.form} onSubmit={SubmitHandler}>
-            <div>
-                <label className={classes.user} htmlFor="username">Username</label>
-                <input className={classes.input} id="username" required type='text'  onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <div>
-                <label className={classes.user} htmlFor='password'>Password</label>
-                <input className={classes.input} id='password' required type={passwordType}  onChange={(e) => setPassword(e.target.value)}   />
-                <img src={img} alt='' className={classes.btn} onClick={()=>{if(passwordType==="password"){setPasswordType("text")}else{setPasswordType("password")} }   }/>
-            </div>
-            <div>
-                <button className={classes.button}>Login</button>
-            </div >
-             {isValid? <div className={classes.content}><p>"Invalid username or password"</p></div> :null}
-        </form>
+        
+            <form className={classes.form} onSubmit={SubmitHandler}>
+                <div>
+                    <label className={classes.user} htmlFor="username">Username</label>
+                    <input className={classes.input} id="username" required type='text'  onChange={(e) => setUsername(e.target.value)} />
+                </div>
+                <div>
+                    <label className={classes.user} htmlFor='password'>Password</label>
+                    <input className={classes.input} id='password' required type={passwordType}  onChange={(e) => setPassword(e.target.value)}   />
+                    <img src={img} alt='' className={classes.btn} onClick={()=>{if(passwordType==="password"){setPasswordType("text")}else{setPasswordType("password")} }   }/>
+                </div>
+                <div>
+                    <button className={classes.button}>Login</button>
+                </div >
+                {isValid? <div className={classes.content}><p>"Invalid username or password"</p></div> :null}
+            </form>
+        
+        
     );   
 }
 export default LoginPage;

@@ -23,13 +23,8 @@
 }
 
 .form{
- /* overflow: hidden;
-  background-color: rgb(155, 124, 124);
-  padding: 40px 30px 30px 30px;
-  border-radius: 30px;
-  align-items: center;
-  left: 50%;
-  margin-top: -3;*/
+ 
+    
 }
 .content{
     color: rgb(0, 0, 0);
@@ -54,4 +49,7 @@
     width: 110px;
     margin-left: 25px;
     
+}
+.page{
+    background-color: brown;
 }
