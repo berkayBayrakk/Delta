@@ -1,32 +1,24 @@
 import UserContext from "../../store/UserContext";
-import {useContext,useState} from 'react';
+import {useContext} from 'react';
 import { useNavigate } from "react-router-dom";
-import TeacherCourses from "./TeacherCourses";
 import TeacherNavigation from "./TeacherNavigation";;
 function TeacherMenu(){
     
     const navigation= useNavigate();
 
     const teacherContext=useContext(UserContext);
-
-    const [items,setItems]=useState([]);
-
-    const [isLoading,setIsLoading]=useState(false);
-    
-    const userTable=["Id","Name","Subject","Teacher Name","Teacher Id"];
-
-    const [deleteId,setDeleteId]=useState();
-    
-    const getUrl="https://smapi.eu-west-3.elasticbeanstalk.com/teacher/lessons";
-
-    console.log(teacherContext.user)
-    const deleteUrl="https://smapi.eu-west-3.elasticbeanstalk.com/teacher/lesson"
+    console.log(teacherContext.user); 
     return(
         <div>
-            <TeacherNavigation navigastion={navigation}/>
-            <TeacherCourses getUrl={getUrl} deleteUrl={deleteUrl} token={teacherContext.user.token} items={items} setItems={setItems} 
-                            isLoading={isLoading} setIsLoading={setIsLoading} userTable={userTable} setDeleteID={setDeleteId}
-                            deleteId={deleteId} navigation={navigation}/>
+            <TeacherNavigation navigation={navigation}/>
+            <table>
+                <tr>{"ID: "+teacherContext.user.id}</tr>
+                <tr>{"Username: "+teacherContext.user.username}</tr>
+                <tr>{"First Name: "+teacherContext.user.firstName}</tr>
+                <tr>{"Last Name: "+teacherContext.user.lastName}</tr>
+                <tr>{"Role Name: "+teacherContext.user.roleName}</tr>
+            </table>
+            
         </div>
         
         );

@@ -3,6 +3,8 @@ import {useState,useContext} from 'react';
 import {CreateUser} from '../../../fetch/methods';
 import UserContext from "../../../store/UserContext";
 import {useNavigate} from 'react-router';
+import classes from './Add.module.css';
+
 function AddUser(){
     
     const navigate=useNavigate();
@@ -37,7 +39,7 @@ function AddUser(){
 
         <div>
             <AdminNavigation/>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} className={classes.form}>
                 <div>
                     <label  htmlFor="username">Username</label>
                     <input id="username" required type='text'  onChange={(e) => setUsername(e.target.value)} />

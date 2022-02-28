@@ -1,5 +1,5 @@
 import classes from './TypeItems.module.css';
-function TypeItem(props,{setDeleteID}){
+function TypeItem(props){
 
     const deleteID=Object.values(props.typeItem)[0];
 

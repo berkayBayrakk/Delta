@@ -1,0 +1,36 @@
+.form{
+    margin-left: 40%;
+    margin-top: 10%;
+    
+    border: 2px brown solid;
+    width: 5cm;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 5px rgb(92, 24, 12);
+    
+}
+.form button{
+    cursor: pointer;
+    color: rgb(216, 202, 202);
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 80px;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 28%;
+    border-radius: 5px;
+    background-color:rgb(92, 42, 18);   
+}
+.form input{
+    display: block;
+    border-radius: 20px;
+    margin-bottom: 4px;
+    margin-left: 5%;
+}
+ 
+.form label{
+    display:block;
+    text-align: center;
+ }
+ 

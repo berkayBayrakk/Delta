@@ -1,17 +1,17 @@
-import AdminNavigation from "../AdminNavigation";
+import ManagerNavigation from '../ManagerNavigation';
 import {useState,useContext} from 'react';
 import {CreateTeacher} from '../../../fetch/methods';
 import UserContext from "../../../store/UserContext";
 import {useNavigate} from 'react-router';
-import classes from './Add.module.css';
+import classes from '../../AdminPages/AddPages/Add.module.css';
 
-function AddTeacher(){
-
-    const url="https://smapi.eu-west-3.elasticbeanstalk.com/admin/teacher"
+function AddTeacherOnManager(){
+    
+    const url="https://smapi.eu-west-3.elasticbeanstalk.com/manager/teacher"
 
     const navigate=useNavigate();
 
-    const admin=useContext(UserContext);
+    const manager=useContext(UserContext);
 
     const [isLoading,setIsLoading]=useState(false);
 
@@ -26,11 +26,11 @@ function AddTeacher(){
         setIsLoading(true);
     }
 
-    CreateTeacher(url,teacher,admin.user.token,isLoading,navigate,setIsLoading);
+    CreateTeacher(url,teacher,manager.user.token,isLoading,navigate,setIsLoading);
 
     return(
         <div>
-            <AdminNavigation/>
+            <ManagerNavigation navigation={navigate}/>
             <form onSubmit={submitHandler} className={classes.form}>
                 <div>
                     <label  htmlFor="UserId">User ID</label>
@@ -48,4 +48,4 @@ function AddTeacher(){
     )
 }
 
-export default AddTeacher;
+export default AddTeacherOnManager;

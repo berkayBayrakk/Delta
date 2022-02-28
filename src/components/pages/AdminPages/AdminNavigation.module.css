@@ -1,5 +1,5 @@
 .header {
-    width: 100%;
+    width: 38.2cm;
     height: 5rem;
     display:flex;
     align-items: center;
@@ -15,8 +15,9 @@
   }
   
   .header ul {
+    margin-left: 17.2cm;
     list-style: none;
-    margin: 0;
+    
     padding: 0;
     display: flex;
     align-items: baseline;

@@ -32,13 +32,13 @@ function LoginPage(){
                         navigate('/admin');
                     }
                     else if(data.roleName==="MANAGER"){
-                        navigate('/admin')
+                        navigate('/manager')
                     }
                     else if(data.roleName==="TEACHER"){
                         navigate('/teacher')
                     }
                     else if(data.roleName==="STUDENT"){
-                        navigate('/admin')
+                        navigate('/student')
                     }}}});},[isLoading]); 
     function SubmitHandler(event){
         event.preventDefault();

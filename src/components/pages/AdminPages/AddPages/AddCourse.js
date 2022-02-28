@@ -3,7 +3,7 @@ import AdminNavigation from "../AdminNavigation";
 import {useState,useContext} from 'react';
 import UserContext from "../../../store/UserContext";
 import {useNavigate} from 'react-router';
-
+import classes from './Add.module.css';
 function AddCourse(){
 
     const navigate=useNavigate();
@@ -32,21 +32,21 @@ function AddCourse(){
     return(
         <div>
             <AdminNavigation/>
-            <form onSubmit={submitHandler}>
-                <div>
-                    <label  htmlFor="Name">Name</label>
+            <form onSubmit={submitHandler} className={classes.form}>
+                <div >
+                    <label   htmlFor="Name">Name</label>
                     <input id="Name" required type='text'  onChange={(e) => setName(e.target.value)} />
                 </div>
-                <div>
+                <div >
                     <label  htmlFor="Subject">Subject</label>
                     <input id="Subject" required type='text'  onChange={(e) => setSubject(e.target.value)} />
                 </div>
-                <div>
-                    <label  htmlFor="TeacherId">Teacher ID</label>
-                    <input id="TeacherId" required type='text'  onChange={(e) => setTeacherId(e.target.value)} />
+                <div className={classes.element}>
+                    <label   htmlFor="TeacherId">Teacher ID</label>
+                    <input  id="TeacherId" required type='text'  onChange={(e) => setTeacherId(e.target.value)} />
                 </div>
-                <div>
-                <button>Add Course</button>
+                <div >
+                <button >Add Course</button>
                 </div>
             </form>
         </div>

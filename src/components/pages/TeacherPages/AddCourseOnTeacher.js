@@ -3,6 +3,7 @@ import {CreateCourse} from '../../fetch/methods';
 import {useNavigate} from 'react-router';
 import UserContext from "../../store/UserContext";
 import TeacherNavigation from "./TeacherNavigation";
+import classes from '../AdminPages/AddPages/Add.module.css'
 function AddCourseOnTeacher(){
 
     const navigate=useNavigate();
@@ -32,7 +33,7 @@ function AddCourseOnTeacher(){
     return(
         <div>
             <TeacherNavigation navigation={navigate}/>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} className={classes.form}>
                 <div>
                     <label  htmlFor="Name">Course Name</label>
                     <input id="Name" required type='text'  onChange={(e) => setName(e.target.value)} />

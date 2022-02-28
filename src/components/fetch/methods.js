@@ -58,7 +58,7 @@ export function CreateUser(user,token,isLoading,navigate,setIsLoading){
         
 }
 
-export function CreateTeacher(teacher,token,isLoading,navigate,setIsLoading){
+export function CreateTeacher(url,teacher,token,isLoading,navigate,setIsLoading){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',Authorization: `Bearer ${token}`,'Accept': 'application/json' },
@@ -66,7 +66,7 @@ export function CreateTeacher(teacher,token,isLoading,navigate,setIsLoading){
     
     useEffect( ()=> {
         if(isLoading){
-            fetch("https://smapi.eu-west-3.elasticbeanstalk.com/admin/teacher", requestOptions)
+            fetch(url, requestOptions)
             .then(resp=>resp.json())
             .then(data=>{
                 console.log(data);
@@ -82,7 +82,7 @@ export function CreateTeacher(teacher,token,isLoading,navigate,setIsLoading){
             [isLoading])
 }
 
-export function CreateStudent(student,token,isLoading,navigate,setIsLoading){
+export function CreateStudent(url,student,token,isLoading,navigate,setIsLoading){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',Authorization: `Bearer ${token}`,'Accept': 'application/json' },
@@ -92,7 +92,7 @@ export function CreateStudent(student,token,isLoading,navigate,setIsLoading){
 
     useEffect( ()=> {
         if(isLoading){
-            fetch("https://smapi.eu-west-3.elasticbeanstalk.com/admin/student", requestOptions)
+            fetch(url, requestOptions)
             .then(resp=>resp.json())
             .then(data=>{
                 console.log(data);
@@ -134,4 +134,24 @@ export function CreateCourse(url,course,token,isLoading,navigate,setIsLoading,na
             }).catch(err=> {console.log(err);alert("Something wrong!!!");setIsLoading(false)})
         }},
         [isLoading])
+}
+
+export function TakeCourse(url,setIsExecute,isExecute,token){
+    useEffect( ()=>{
+        if(isExecute){
+            const requestOptions={
+                method:"POST",
+                headers: { 'Content-Type': 'application/json',Authorization: `Bearer ${token}`,'Accept': 'application/json' }
+            }
+            fetch(url,requestOptions)
+            .then(resp=>resp.json())
+            .then(data=>{
+                if(data==="Lesson created"){
+                    setIsExecute(false);
+                }
+            }).catch(err =>{
+                alert("Something wrong!!!");
+            })
+        }
+    },[isExecute]  )
 }

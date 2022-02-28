@@ -7,8 +7,11 @@ function TeacherNavigation(props){
             <div className={classes.logo} onClick={()=>(props.navigation('/teacher'))}>Teacher Page</div>
                 <nav>
                     <ul>
+                    <li>
+                        <Link to='/teacher-courses'>Courses</Link> 
+                        </li>
                         <li>
-                        <   Link to='/'>Logout</Link> 
+                        <Link to='/'>Logout</Link> 
                         </li>
                     </ul>
                 </nav>

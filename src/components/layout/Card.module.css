@@ -11,6 +11,7 @@
 }
 
 .card{
+    margin-top:-2cm;
     background-color: rgb(141, 129, 129);
     border:3px solid;
     border-radius: 30px;
