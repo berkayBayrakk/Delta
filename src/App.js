@@ -20,39 +20,54 @@ import ManagerMenu from './components/pages/ManagerPages/ManagerMenu';
 import ManagerStudent from './components/pages/ManagerPages/ManagerStudent';
 import ManagerTeacher from './components/pages/ManagerPages/ManagerTeacher';
 import AddTeacherOnManager from './components/pages/ManagerPages/AddPages/AddTeacherOnManager';
-import AddStudentOnManager from './components/pages/ManagerPages/AddPages/AddStudentOnManager'
+import AddStudentOnManager from './components/pages/ManagerPages/AddPages/AddStudentOnManager';
+import UserContext from './components/store/UserContext';
+import {useContext}from 'react';
+
 function App() {
+
+  const user=useContext(UserContext);
+
+  
+
+  function isValid(roleName){
+    if(user.user.roleName===roleName){
+      return true;
+    }
+    else{return false}
+  }
+
+
+console.log(user);
+
   return (
     <div>
       <Routes>
         <Route path="/" element={<Card><LoginPage/></Card>} />
 
-        <Route path="/admin" element={<AdminPage />}/>
-        <Route path="/users" element={<UserPage />}/>
-        <Route path="/teachers" element={<TeacherPage />}/>
-        <Route path="/students" element={<StudentPage />}/>
-        <Route path="/courses" element={<CoursePage />}/>
-        <Route path="/add-user" element={<AddUser />}/>
-        <Route path="/add-teacher" element={<AddTeacher />}/>
-        <Route path="/add-student" element={<AddStudent />}/>
-        <Route path="/add-course" element={<AddCourse />}/>
+        <Route path="/admin" element={isValid("SYSADMIN")?<AdminPage/>:<Card><LoginPage/></Card>}/>
+        <Route path="/users" element={isValid("SYSADMIN")?<UserPage/>:<Card><LoginPage/></Card>}/>
+        <Route path="/teachers" element={isValid("SYSADMIN")?<TeacherPage/>:<Card><LoginPage/></Card>}/>
+        <Route path="/students" element={isValid("SYSADMIN")?<StudentPage/>:<Card><LoginPage/></Card>}/>
+        <Route path="/courses" element={isValid("SYSADMIN")?<CoursePage/>:<Card><LoginPage/></Card>}/>
+        <Route path="/add-user" element={isValid("SYSADMIN")?<AddUser/>:<Card><LoginPage/></Card>}/>
+        <Route path="/add-teacher" element={isValid("SYSADMIN")?<AddTeacher/>:<Card><LoginPage/></Card>}/>
+        <Route path="/add-student" element={isValid("SYSADMIN")?<AddStudent/>:<Card><LoginPage/></Card>}/>
+        <Route path="/add-course" element={isValid("SYSADMIN")?<AddCourse/>:<Card><LoginPage/></Card>}/>
 
-        <Route path="/teacher" element={<TeacherMenu />}/>
-        <Route path='/add-teacher-teacherpage'element={<AddCourseOnTeacher />}/>
-        <Route path='/teacher-courses'element={<TeacherCourses />}/>
+        <Route path="/teacher" element={isValid("TEACHER")?<TeacherMenu />:<Card><LoginPage/></Card>}/>
+        <Route path='/add-teacher-teacherpage'element={isValid("TEACHER")?<AddCourseOnTeacher />:<Card><LoginPage/></Card>}/>
+        <Route path='/teacher-courses'element={isValid("TEACHER")?<TeacherCourses />:<Card><LoginPage/></Card>}/>
         
-        <Route path="/student" element={<StudentMenu />}/>
-        <Route path="/student-courses" element={<StudentCourses />}/>
-        <Route path="/student-course" element={<StudentMyCourse />}/>
+        <Route path="/student" element={isValid("STUDENT")?<StudentMenu />:<Card><LoginPage/></Card>}/>
+        <Route path="/student-courses" element={isValid("STUDENT")?<StudentCourses />:<Card><LoginPage/></Card>}/>
+        <Route path="/student-course" element={isValid("STUDENT")?<StudentMyCourse />:<Card><LoginPage/></Card>}/>
         
-        <Route path="/manager" element={<ManagerMenu/>}/>
-        <Route path="/manager-student" element={<ManagerStudent/>}/>
-        <Route path="/manager-teacher" element={<ManagerTeacher/>}/>
-        <Route path="/add-teacher-manager" element={<AddTeacherOnManager/>}/>
-        <Route path="/add-student-manager" element={<AddStudentOnManager/>}/>
-
-
-        
+        <Route path="/manager" element={isValid("MANAGER")?<ManagerMenu/>:<Card><LoginPage/></Card>}/>
+        <Route path="/manager-student" element={isValid("MANAGER")?<ManagerStudent/>:<Card><LoginPage/></Card>}/>
+        <Route path="/manager-teacher" element={isValid("MANAGER")?<ManagerTeacher/>:<Card><LoginPage/></Card>}/>
+        <Route path="/add-teacher-manager" element={isValid("MANAGER")?<AddTeacherOnManager/>:<Card><LoginPage/></Card>}/>
+        <Route path="/add-student-manager" element={isValid("MANAGER")?<AddStudentOnManager/>:<Card><LoginPage/></Card>}/>
 
     </Routes>
     </div>

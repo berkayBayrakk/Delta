@@ -21,12 +21,14 @@ function AddStudent(){
 
     const student={studentNo:studentNo,schoolId:schoolId,userId:userId};
 
+    const url="https://smapi.eu-west-3.elasticbeanstalk.com/admin/student"
+
     function submitHandler(event){
         event.preventDefault();
         setIsLoading(true);
     }
 
-    CreateStudent(student,admin.user.token,isLoading,navigate,setIsLoading);
+    CreateStudent(url,student,admin.user.token,isLoading,navigate,setIsLoading);
 
     return(
         <div>

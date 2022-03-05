@@ -2,7 +2,7 @@ import TypeItem from "./TypeItem";
 import classes from './TypeItemList.module.css'
 
 function TypeItemList(props){
-
+    
     return(
         <div className={classes.App}>
             <table className={classes.table}>
