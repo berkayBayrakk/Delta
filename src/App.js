@@ -1,7 +1,7 @@
 import Card from './components/layout/Card';
 import LoginPage from './components/pages/LoginPage/Login';
 import AdminPage from './components/pages/AdminPages/AdminMenu';
-import {Route,Routes} from 'react-router-dom';
+import {Route,Routes,Navigate} from 'react-router-dom';
 import CoursePage from './components/pages/AdminPages/CoursePage';
 import StudentPage from './components/pages/AdminPages/StudentPage'
 import TeacherPage from './components/pages/AdminPages/TeacherPage'
@@ -28,23 +28,20 @@ function App() {
 
   const user=useContext(UserContext);
 
-  
-
   function isValid(roleName){
+    console.log(user.user.roleName);
     if(user.user.roleName===roleName){
       return true;
     }
     else{return false}
   }
 
-
-console.log(user);
-
   return (
     <div>
+      
       <Routes>
         <Route path="/" element={<Card><LoginPage/></Card>} />
-
+        
         <Route path="/admin" element={isValid("SYSADMIN")?<AdminPage/>:<Card><LoginPage/></Card>}/>
         <Route path="/users" element={isValid("SYSADMIN")?<UserPage/>:<Card><LoginPage/></Card>}/>
         <Route path="/teachers" element={isValid("SYSADMIN")?<TeacherPage/>:<Card><LoginPage/></Card>}/>
@@ -68,8 +65,10 @@ console.log(user);
         <Route path="/manager-teacher" element={isValid("MANAGER")?<ManagerTeacher/>:<Card><LoginPage/></Card>}/>
         <Route path="/add-teacher-manager" element={isValid("MANAGER")?<AddTeacherOnManager/>:<Card><LoginPage/></Card>}/>
         <Route path="/add-student-manager" element={isValid("MANAGER")?<AddStudentOnManager/>:<Card><LoginPage/></Card>}/>
-
+        
+        <Route path="*" element={<Navigate replace to="/" />} />
     </Routes>
+    
     </div>
     
   );
