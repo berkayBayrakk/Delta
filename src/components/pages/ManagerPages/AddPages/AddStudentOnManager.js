@@ -1,13 +1,13 @@
 import ManagerNavigation from '../ManagerNavigation';
 import {useState,useContext} from 'react';
-import {CreateStudent, CreateTeacher} from '../../../fetch/methods';
+import {CreateStudent} from '../../../fetch/methods';
 import UserContext from "../../../store/UserContext";
 import {useNavigate} from 'react-router';
 import classes from '../../AdminPages/AddPages/Add.module.css';
 
 function AddStudentOnManager(){
 
-    const url="https://smapi.eu-west-3.elasticbeanstalk.com/manager/student"
+    const url="https://smapi.eu-west-3.elasticbeanstalk.com/management/student"
 
     const navigate=useNavigate();
 
@@ -21,14 +21,14 @@ function AddStudentOnManager(){
 
     const [schoolId,setSchoolId]=useState();
 
-    const student={studentNo:studentNo,userId:userId,schoolId:schoolId};
+    const student={studentNo:studentNo,userId:parseInt(userId),schoolId:parseInt(schoolId)};
    
     function submitHandler(event){
         event.preventDefault();
         setIsLoading(true);
     }
 
-    CreateStudent(url,student,manager.user.token,isLoading,navigate,setIsLoading);
+    CreateStudent(url,student,manager.user.token,isLoading,navigate,setIsLoading,"manager-student");
 
     return(
         <div>

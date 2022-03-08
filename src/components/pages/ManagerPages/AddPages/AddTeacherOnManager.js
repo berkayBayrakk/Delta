@@ -7,7 +7,7 @@ import classes from '../../AdminPages/AddPages/Add.module.css';
 
 function AddTeacherOnManager(){
     
-    const url="https://smapi.eu-west-3.elasticbeanstalk.com/manager/teacher"
+    const url="https://smapi.eu-west-3.elasticbeanstalk.com/management/teacher"
 
     const navigate=useNavigate();
 
@@ -19,14 +19,15 @@ function AddTeacherOnManager(){
 
     const [schoolId,setSchoolId]=useState();
 
-    const teacher={userId:userId,schoolId:schoolId};
+    const teacher={userId:parseInt(userId),schoolId:parseInt(schoolId)};
 
     function submitHandler(event){
         event.preventDefault();
+
         setIsLoading(true);
     }
 
-    CreateTeacher(url,teacher,manager.user.token,isLoading,navigate,setIsLoading);
+    CreateTeacher(url,teacher,manager.user.token,isLoading,navigate,setIsLoading,"manager-teacher");
 
     return(
         <div>

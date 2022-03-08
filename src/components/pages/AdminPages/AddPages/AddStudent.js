@@ -28,7 +28,7 @@ function AddStudent(){
         setIsLoading(true);
     }
 
-    CreateStudent(url,student,admin.user.token,isLoading,navigate,setIsLoading);
+    CreateStudent(url,student,admin.user.token,isLoading,navigate,setIsLoading,"students");
 
     return(
         <div>

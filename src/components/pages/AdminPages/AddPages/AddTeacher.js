@@ -26,7 +26,7 @@ function AddTeacher(){
         setIsLoading(true);
     }
 
-    CreateTeacher(url,teacher,admin.user.token,isLoading,navigate,setIsLoading);
+    CreateTeacher(url,teacher,admin.user.token,isLoading,navigate,setIsLoading,"teachers");
 
     return(
         <div>

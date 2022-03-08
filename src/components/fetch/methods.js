@@ -58,31 +58,32 @@ export function CreateUser(user,token,isLoading,navigate,setIsLoading){
         
 }
 
-export function CreateTeacher(url,teacher,token,isLoading,navigate,setIsLoading){
+export function CreateTeacher(url,teacher,token,isLoading,navigate,setIsLoading,place){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',Authorization: `Bearer ${token}`,'Accept': 'application/json' },
         body: JSON.stringify({userId:teacher.userId,schoolId:teacher.schoolId})};
-    
+    console.log(place)
     useEffect( ()=> {
         if(isLoading){
             fetch(url, requestOptions)
             .then(resp=>resp.json())
             .then(data=>{
-                console.log(data);
+               
                 if(data.title==="One or more validation errors occurred."){
                     setIsLoading(false);
                     alert("One or more validation errors occurred.");
                 }
                 if(data==="Teacher added"){
-                    navigate('/teachers');
+                    
+                    navigate('/'+place)
                 }
             }).catch(err=> {console.log(err);alert("Something wrong!!!");setIsLoading(false)})
         }},
             [isLoading])
 }
 
-export function CreateStudent(url,student,token,isLoading,navigate,setIsLoading){
+export function CreateStudent(url,student,token,isLoading,navigate,setIsLoading,place){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',Authorization: `Bearer ${token}`,'Accept': 'application/json' },
@@ -101,7 +102,7 @@ export function CreateStudent(url,student,token,isLoading,navigate,setIsLoading)
                     alert("One or more validation errors occurred.");
                 }
                 if(data==="Student added"){
-                    navigate('/students');
+                    navigate('/'+place);
                 }
             }).catch(err=> {console.log(err);alert("Something wrong!!!");setIsLoading(false)})
         }},

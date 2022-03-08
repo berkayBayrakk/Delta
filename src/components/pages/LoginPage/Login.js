@@ -51,7 +51,7 @@ function LoginPage(){
             <form className={classes.form} onSubmit={SubmitHandler}>
                 <div>
                     <label  htmlFor="username"></label>
-                    <input placeholder='Username' className={classes.input} id="username" required type='text'  onChange={(e) => setUsername(e.target.value)} />
+                    <input  placeholder='Username' className={classes.input} id="username" required type='text'  onChange={(e) => setUsername(e.target.value)} />
                 </div>
                 <div>
                     <label  htmlFor='password'></label>

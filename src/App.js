@@ -62,7 +62,7 @@ function App() {
         
         <Route path="/manager" element={isValid("MANAGER")?<ManagerMenu/>:<Card><LoginPage/></Card>}/>
         <Route path="/manager-student" element={isValid("MANAGER")?<ManagerStudent/>:<Card><LoginPage/></Card>}/>
-        <Route path="/manager-teacher" element={isValid("MANAGER")?<ManagerTeacher/>:<Card><LoginPage/></Card>}/>
+        <Route path="/manager-teacher" element={<ManagerTeacher/>}/>
         <Route path="/add-teacher-manager" element={isValid("MANAGER")?<AddTeacherOnManager/>:<Card><LoginPage/></Card>}/>
         <Route path="/add-student-manager" element={isValid("MANAGER")?<AddStudentOnManager/>:<Card><LoginPage/></Card>}/>
         
