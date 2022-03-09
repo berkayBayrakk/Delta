@@ -1,6 +1,5 @@
 import TypeItem from "./TypeItem";
 import classes from './TypeItemList.module.css'
-
 function TypeItemList(props){
     
     return(
@@ -14,6 +13,7 @@ function TypeItemList(props){
                 />))}
             
             </table>
+            
         </div>
     )
 }
