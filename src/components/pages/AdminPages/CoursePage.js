@@ -5,7 +5,6 @@ import {useState, useContext} from 'react';
 import TypeItemList from "../../types/TypeItemList";
 import { GetData,DeleteItem } from "../../fetch/methods";
 import {useNavigate} from 'react-router';
-import buttonClass from '/Users/Berkay/delta/src/components/AddButton.module.css';
 function CoursePage(){
 
     const navigate =useNavigate();
@@ -34,7 +33,7 @@ function CoursePage(){
         <div>
             <AdminNavigation/>
             {isLoading?<TypeItemList typeItems={items} tableItems={userTable} setDeleteID={setDeleteID} />:<Loader />}
-            {isLoading?<button className={buttonClass.addButton} onClick={()=>(navigate('/add-course'))}>Add New Course</button>:null}
+            {isLoading?<button  onClick={()=>(navigate('/add-course'))}>Add New Course</button>:null}
         </div>
     )
 }
